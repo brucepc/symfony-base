@@ -30,6 +30,7 @@ RUN docker-php-ext-install \
 	mbstring \
         mcrypt \
 	pdo_pgsql \
+	pdo_mysql \
 	curl \
 	json \
 	intl \
@@ -40,22 +41,9 @@ RUN docker-php-ext-install \
 	bz2 \
 	opcache
 
-RUN pecl install xdebug
-RUN docker-php-ext-enable \
-	xdebug \
-	mbstring \
-	mcrypt \
-	pdo_pgsql \
-	curl \
-	json \
-	intl \
-	exif \
-	gd \
-	xml \
-	zip \
-	bz2 \
-	opcache
-
+RUN pecl install xdebug \
+	 docker-php-ext-enable \
+	 xdebug 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
